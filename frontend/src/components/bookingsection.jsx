@@ -1,3 +1,4 @@
+import { MagnifyingGlassIcon } from '@heroicons/react/20/solid'
 import React from 'react'
 
 const BoookingSection = () => {
@@ -13,7 +14,8 @@ const BoookingSection = () => {
           <option>Menu</option>
          
         </select>
-        <button className="bg-green-600 text-white px-10 py-2 rounded-md shadow-md hover:border-gray-400">
+        <button className="bg-green-600 text-white px-10 py-2 rounded-md shadow-md hover:border-gray-400 flex  items-center">
+          <MagnifyingGlassIcon className="size-5 mr-2" />
           Search
         </button>
       </div>

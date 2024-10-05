@@ -27,16 +27,16 @@ const menus = [
     title: "Paneer Chilly",
     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit, vulputate eu pharetra nec, mattis ac neque.",
     price: "$19.99",
-    button: "order now"
+    button: "order now" 
   }
 ];
 
 const MenuSection = () => {
   return (
     <section id='menu'>
-      <div className="w-full h-full flex flex-wrap justify-between m-6 py-12" style={{ gap: "5rem" }}>
+      <div className="w-full h-full flex flex-wrap justify-between py-12 grid-cols-1 " style={{ gap: "5rem" }}>
         {menus.map((menu, index) => (
-          <div key={index} className="w-[300px] h-[400px] shadow-md rounded-md">
+          <div key={index} className="w-[300px] h-[400px] rounded-tl-2xl overflow-hidden shadow-md rounded-md">
             <img src={menu.image} alt={menu.title} className="w-full h-[200px] object-cover rounded-t-md" />
             <div className="p-4">
               <h2 className="text-xl font-semibold mb-2">{menu.title}</h2>
