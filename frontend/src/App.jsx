@@ -7,6 +7,7 @@ import Offer from "./components/offer";
 import TableSection from "./components/tablesection";
 import Banner from "./components/banner";
 import Services from "./components/service";
+import Footer from "./components/footer";
 function App() {
 
   return (
@@ -21,6 +22,7 @@ function App() {
       <TableSection/>
       <Banner/>
       <Services/>
+      <Footer/>
        </div>
     
   ) ;
