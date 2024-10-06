@@ -6,6 +6,7 @@ import MenuSection from "./components/menusection";
 import Offer from "./components/offer";
 import TableSection from "./components/tablesection";
 import Banner from "./components/banner";
+import Services from "./components/service";
 function App() {
 
   return (
@@ -19,6 +20,7 @@ function App() {
       <Offer/>
       <TableSection/>
       <Banner/>
+      <Services/>
        </div>
     
   ) ;
