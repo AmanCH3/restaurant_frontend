@@ -6,12 +6,12 @@ const TableSection = () => {
     <div className="relative">
       <div className="flex flex-col">
         {/* Image section */}
-        <div className="w-full">
+        <div className=" absolute w-full">
           <img src={booking} alt="table image" className="w-full h-full object-cover" />
         </div>
 
         {/* Form section */}
-        <section className="w-full flex flex-col  bg-white p-12 border-1 shadow-sm">
+        <section className=" relative  flex flex-col last:bg-white p-12 border-1 shadow-sm top-1/2 mt-20">
           <div className="mx-6 flex flex-row justify-between">
             <h1 className="text-lg font-bold mb-4">Book a Table</h1>
             <select className=" shadow-sm  rounded">

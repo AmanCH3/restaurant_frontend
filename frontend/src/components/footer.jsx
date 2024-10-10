@@ -18,7 +18,7 @@ const Footer = () => {
           <div className='flex flex-row mt-4 px-4'>
 
           <p className=" ">Our Social Media:</p>
-            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="text-blue-500">
+            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="text-blue-500 px-2">
               <FaFacebookF size={24} />
             </a>
           </div>

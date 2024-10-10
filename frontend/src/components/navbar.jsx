@@ -8,7 +8,7 @@ const NavBar = () => {
     const [isScrolled, setIsScrolled] = useState(false);
   
     const handleProfileClick = () => {
-      navigate("/profile"); // Replace with the route to your ProfileForm page
+      navigate("/Login"); 
     };
   
     useEffect(() => {
