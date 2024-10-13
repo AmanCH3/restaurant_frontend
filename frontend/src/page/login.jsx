@@ -7,7 +7,7 @@ import google from '../assets/googlelogo.png';
 
 const Login = () => {
   return (
-    <div className="relative min-h-screen flex flex-col justify-between">
+    <div className="relative min-h-screen z-10 flex flex-col justify-between">
       {/* Navbar */}
       <NavBar />
 
@@ -71,10 +71,11 @@ const Login = () => {
               Not registered yet? <a href="#" className="text-green-700 hover:underline">Create an account</a>
             </h2>
           </div>
+          
         </div>
       </div>
 
-      {/* Footer */}
+     
       <Footer />
     </div>
   );
