@@ -7,9 +7,12 @@ import google from '../assets/googlelogo.png';
 
 const Login = () => {
   return (
+
+    <div className='w-max[full]'>
+
+      <NavBar />
     <div className="relative min-h-screen z-10 flex flex-col justify-between">
       {/* Navbar */}
-      <NavBar />
 
       {/* Background Image */}
       <div className="absolute inset-0 z-0 w-full h-full">
@@ -42,7 +45,7 @@ const Login = () => {
                 className="w-full p-2 border border-gray-300 rounded-lg" 
                 placeholder="E.g. johndoe@gmail.com" 
                 required 
-              />
+                />
             </div>
 
             <div>
@@ -53,7 +56,7 @@ const Login = () => {
                 className="w-full p-2 border border-gray-300 rounded-lg" 
                 placeholder="Enter your password" 
                 required 
-              />
+                />
             </div>
           </form>
 
@@ -76,8 +79,9 @@ const Login = () => {
       </div>
 
      
-      <Footer />
     </div>
+      <Footer />
+                </div>
   );
 };
 

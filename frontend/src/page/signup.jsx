@@ -6,9 +6,12 @@ import google from '../assets/googlelogo.png';
 
 const SignUp = () => {
   return (
+
+    <div className='w-max[full]'>
+
+      <NavBar />
     <div className="relative min-h-screen z-10 flex flex-col justify-between">
       {/* Navbar */}
-      <NavBar />
 
       {/* Background Image */}
       <div className="absolute inset-0 z-0 w-full h-full">
@@ -32,7 +35,7 @@ const SignUp = () => {
             className='w-full p-2 border-gray-300 rounded-lg '
             placeholder='Jhondoe.12'
             required
-             />
+            />
             
             {/* your email  */}
             <label htmlFor="email" className="block text-sm font-medium text-gray-700">Email</label>
@@ -42,7 +45,7 @@ const SignUp = () => {
               className="w-full p-2 border border-gray-300 rounded-lg" 
               placeholder="E.g. johndoe@gmail.com" 
               required 
-            />
+              />
 
             {/* your pASSWORD */}
 
@@ -52,7 +55,7 @@ const SignUp = () => {
             className='w-full p-2 border-gray-300 rounded-lg '
             placeholder='Enter your password'
             required
-             />
+            />
 
 
 
@@ -63,7 +66,7 @@ const SignUp = () => {
             className='w-full p-2 border-gray-300 rounded-lg '
             placeholder='Enter your password'
             required
-             />
+            />
 
             </div>
 
@@ -103,8 +106,9 @@ const SignUp = () => {
       </div>
 
      
-      <Footer />
     </div>
+      <Footer />
+            </div>
   );
 };
 
