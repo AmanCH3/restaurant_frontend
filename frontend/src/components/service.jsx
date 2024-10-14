@@ -3,7 +3,7 @@ import Oldlady from '../assets/oldlady.png'
 
 const Services = () => {
   return (
-    <div className='flex flex-row m-6 justify-between'>
+    <div className='flex flex-row m-6 justify-between overflow-hidden'>
         <div>
             <img src={Oldlady} alt="old lady images" />
 
