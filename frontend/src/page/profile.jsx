@@ -12,7 +12,7 @@ const Profile = () => {
     <div className="flex">
         
       {/* Sidebar */}
-      <div className="bg-orange-100 p-2 w-1/4">
+      <div className="bg-yellow-50 p-2  w-55">
         <div className="flex flex-col items-center">
           <img src={profile} alt="profile picture" className="rounded-full w-24 h-24 mb-4" />
           <h1 className="text-lg font-bold">Aman Chaudhary</h1>

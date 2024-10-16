@@ -48,7 +48,7 @@ const Gallery = () => {
       {/* Video section */}
       <div className='m-10'>
 
-        <video className='rounded-lg h-50' controls autoPlay src={video}></video>
+        <video className='rounded-lg h-50' controls autoPlay muted src={video}></video>
 
       </div>
       {/* text for food section */}
