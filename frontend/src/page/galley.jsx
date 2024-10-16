@@ -5,7 +5,13 @@ import picture1 from '../assets/gallery/picture1.png';
 import picture2 from '../assets/gallery/picture2.png';
 import picture3 from '../assets/gallery/picture3.png';
 import picture4 from '../assets/gallery/picture4.png';
-import video from '../assets/gallery/resturantvideo.mp4'
+import video from '../assets/gallery/resturantvideo.mp4' ;
+import paneer from '../assets/gallery/paneer.png' ;
+import thali from '../assets/gallery/thali.png' ;
+import roti from '../assets/gallery/roti.png' ;
+import amb1 from '../assets/gallery/ambience1.png' ;
+import amb2 from '../assets/gallery/ambience2.png'
+import amb3 from '../assets/gallery/ambience3.png' ;
 
 const Gallery = () => {
   return (
@@ -40,11 +46,38 @@ const Gallery = () => {
      
 
       {/* Video section */}
-      <div className='m-10 h-50 '>
+      <div className='m-10'>
 
-        <video className='rounded-lg' controls autoPlay src={video}></video>
+        <video className='rounded-lg h-50' controls autoPlay src={video}></video>
 
       </div>
+      {/* text for food section */}
+      <div className=' flex  items-center '>
+        <h1 className='font-semibold px-20'>Our Food</h1>
+      </div>
+
+      {/* our food section */}
+      <div className='flex flex-row m-10 items-center justify-center gap-3'>
+        <img src={paneer} alt="Food items" />
+        <img src={thali} alt=" Food items" />
+        <img src={roti} alt="Food items" />
+      </div>
+
+
+      {/* text for ambience */}
+      <div className=' flex  items-center '>
+        <h1 className='font-semibold px-20'>Our Ambience</h1>
+      </div>
+
+      {/* our ambiencence section */}
+      <div className='flex flex-row m-10 items-center justify-center gap-3'>
+        <img src={amb1} alt="Our ambience" />
+        <img src={amb2} alt=" Our ambience" />
+        <img src={amb3} alt="Our ambience" />
+      </div>
+
+
+
 
       <Footer />
     </div>
