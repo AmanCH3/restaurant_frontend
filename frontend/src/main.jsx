@@ -8,6 +8,7 @@ import SignUp from './page/signup.jsx';
 import Profile from './page/profile.jsx' ;
 import MenuPage from './page/menu.jsx' ;
 import Gallery from './page/galley.jsx' ;
+import Event  from './page/event.jsx';
 
 const router = createBrowserRouter([
   {
@@ -33,6 +34,11 @@ const router = createBrowserRouter([
   {
     path : '/gallery',
     element : <Gallery />,
+
+  },
+  {
+    path : "/event",
+    element : <Event />,
   }
 ]);
 
