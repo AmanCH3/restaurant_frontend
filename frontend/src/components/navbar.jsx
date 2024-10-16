@@ -1,77 +1,69 @@
-import React from 'react'
-import logo from '../assets/navlogo.png'
-import { useState, useEffect } from "react";
-import profile from "../assets/profile.jpg";
-import cart from "../assets/cart.png";
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import logo from "../assets/navlogo.png";
+import profile from "../assets/profile1.jpg";
+import cart from "../assets/cart1.jpg";
 
 const NavBar = () => {
-    const [isScrolled, setIsScrolled] = useState(false);
-  
-    const handleProfileClick = () => {
-      navigate("/Login"); 
+  const [isScrolled, setIsScrolled] = useState(false);
+  const navigate = useNavigate();
+
+  const handleProfileClick = () => {
+    navigate("/profile");
+  };
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 120);
     };
-  
-    useEffect(() => {
-      const handleScroll = () => {
-        console.log(window.scrollY);
-        if (window.scrollY > 120) {
-          setIsScrolled(true);
-        } else {
-          setIsScrolled(false);
-        }
-      };
-  
-      window.addEventListener("scroll", handleScroll);
-  
-      return () => {
-        window.removeEventListener("scroll", handleScroll);
-      };
-    }, []);
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
-    <div className="flex justify-between items-center  border-solid  shadow-sm h-[80px]">
-    <img
-      src={logo}
-      alt="Logo"
-      className="w-[50px] h-[60px] mx-20"
-    />
+    <div className="w-full bg-white flex justify-between items-center h-[80px] px-4 lg:px-16 transition-all duration-300 mx-auto max-w-screen-xl">
+      {/* Logo */}
+      <img src={logo} alt="Logo" className="w-[50px] h-[60px]" />
 
-    <ul className="hidden sm:flex gap-6 md:gap-10">
-      {["Menu", "Gallery", "About us", "Events"].map((item) => (
-        <li key={item}>
+      {/* Navigation Links */}
+      <ul className="hidden sm:flex gap-6 md:gap-10">
+        {["Menu", "Gallery", "About us", "Events"].map((item) => (
+          <li key={item}>
+            <a
+              href={`#${item.toLowerCase()}`}
+              className="capitalize text-[15px] sm:text-[19px] hover:text-gray-600 transition-all duration-300 cursor-pointer"
+            >
+              {item}
+            </a>
+          </li>
+        ))}
+      </ul>
 
-          <a
-            href={`#${item.toLowerCase()}`}
-            className="capitalize  text-[15px] sm:text-[19px] font-semibold hover:border-slate-400 cursor-pointer"
-          >
-            {item}
-          </a>
-        </li>
-      ))}
-    </ul>
+      {/* Right section: Order button, cart, and profile */}
+      <div className="flex items-center gap-4">
+        <button
+          className="bg-white text-black px-4 py-2 rounded-md font-bold hover:bg-slate-400 transition-all duration-300 text-xs sm:text-sm border"
+          onClick={() => navigate("/order")}
+        >
+          ORDER NOW
+        </button>
 
-    <div className="flex items-center gap-2 sm:gap-4 px-12">
-      <button
-        to={"/order"}
-        className="bg-white text-black border-2 px-2 py-1 sm:px-4 sm:py-2 rounded-md font-bold hover:border-slate-200 text-xs sm:text-sm border-spacing-1 border-black"
-      >
-        ORDER NOW
-      </button>
-      <img
-      src = {cart}
-      alt='Cart image'
-      className='rounded-full object-cover w-8 h-8 sm:w-10 sm:h-8'>
-        
-      </img>
-      <img
-        src={profile}
-        alt="Profile"
-        className="w-8 h-8 sm:w-10 sm:h-10 rounded-full object-cover"
-        onClick={handleProfileClick}
-      />
+        <img
+          src={cart}
+          alt="Shopping Cart"
+          className="w-8 h-8 sm:w-10 sm:h-8 rounded-full object-cover cursor-pointer hover:opacity-80 transition-opacity duration-300"
+        />
 
+        <img
+          src={profile}
+          alt="Profile"
+          className="w-8 h-8 sm:w-10 sm:h-10 rounded-full object-cover cursor-pointer hover:opacity-80 transition-opacity duration-300"
+          onClick={handleProfileClick}
+        />
+      </div>
     </div>
-  </div>
-  )
-}
+  );
+};
 
-export default NavBar
+export default NavBar;

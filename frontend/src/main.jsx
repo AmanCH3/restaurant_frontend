@@ -7,6 +7,7 @@ import Login from './page/Login.jsx' ;
 import SignUp from './page/signup.jsx';
 import Profile from './page/profile.jsx' ;
 import MenuPage from './page/menu.jsx' ;
+import Gallery from './page/galley.jsx' ;
 
 const router = createBrowserRouter([
   {
@@ -28,6 +29,10 @@ const router = createBrowserRouter([
   {
     path : '/menu',
     element : <MenuPage />,
+  },
+  {
+    path : '/gallery',
+    element : <Gallery />,
   }
 ]);
 

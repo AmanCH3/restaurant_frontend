@@ -18,8 +18,10 @@ const TableSection = () => {
               <option value="">Select a branch</option>
             </select>
           </div>
-          <div className="flex flex-row items-start mx-6  space-y-4">
+          <div className="flex flex-row  mx-6  space-y-4">
             <form className="w-full">
+              <div className=''>
+
               <label htmlFor="Date" className="block text-sm font-medium mb-1">Date</label>
               <input type="date" className="w-full p-2 mb-4 border border-gray-300 rounded" />
 
@@ -36,6 +38,7 @@ const TableSection = () => {
               <input type="text" placeholder="Write down if you want to mention anything..." className="w-full p-2 mb-4 border border-gray-300 rounded" />
 
               <button className="bg-green-600 text-white py-2 px-4 rounded mt-4">Check Availability</button>
+              </div>
             </form>
           </div>
         </section>
