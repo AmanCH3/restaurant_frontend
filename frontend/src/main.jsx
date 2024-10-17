@@ -9,6 +9,7 @@ import Profile from './page/profile.jsx' ;
 import MenuPage from './page/menu.jsx' ;
 import Gallery from './page/galley.jsx' ;
 import Event  from './page/event.jsx';
+import Aboutus from './page/aboutus.jsx';
 
 const router = createBrowserRouter([
   {
@@ -39,6 +40,10 @@ const router = createBrowserRouter([
   {
     path : "/event",
     element : <Event />,
+  },
+  {
+    path : "/aboutus",
+    element : <Aboutus/>
   }
 ]);
 
