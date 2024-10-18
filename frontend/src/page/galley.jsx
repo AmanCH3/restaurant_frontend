@@ -16,9 +16,14 @@ import amb3 from '../assets/gallery/ambience3.png' ;
 const Gallery = () => {
   return (
     <div className='max-w-full'>
-      <NavBar />
+      
+
+      <NavBar  />
+    
+      <div className='bg-gallery'>
+
       <div className='flex justify-center py-10'>
-        <h1>Use the hashtag #thespices to be featured!!</h1>
+        <h1 className='font-semibold'>Use the hashtag #thespices to be featured!!</h1>
       </div>
 
       {/* Gallery Section */}
@@ -79,6 +84,7 @@ const Gallery = () => {
 
 
 
+      </div>
       <Footer />
     </div>
   );

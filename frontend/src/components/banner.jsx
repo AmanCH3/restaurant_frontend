@@ -7,7 +7,7 @@ import ubereats from '../assets/ubereats.jpg';
 
 const Banner = () => {
   return (
-    <div className='flex flex-col md:flex-row justify-between items-center mx-12 py-12 mt-8'>
+    <div className='flex flex-col md:flex-row justify-between items-center mx-12 py-12 mt-28'> {/* Added 'mt-28' */}
       {/* Text Section */}
       <div className='flex flex-col font-sans mb-8 md:mb-0'>
         <h1 className='text-2xl font-bold'>You can order <br /> through apps</h1>
@@ -29,6 +29,6 @@ const Banner = () => {
       </div>
     </div>
   );
-}
+};
 
 export default Banner;

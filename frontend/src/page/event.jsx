@@ -32,6 +32,8 @@ const Event = () => {
   return (
     <div className="max-w-full bg-orange-10">
       <NavBar />
+      <div className='bg-gallery'>
+
       {/* Event title */}
       <div className="flex items-center justify-center py-10">
         <h1 className="text-3xl font-bold">Upcoming Events</h1>
@@ -40,7 +42,7 @@ const Event = () => {
       {/* Event list */}
       <div className="container mx-auto px-4 py-8">
         {events.map((event) => (
-          <div key={event.id} className="flex flex-col md:flex-row items-center bg-white  overflow-hidden mb-8">
+          <div key={event.id} className="flex flex-col md:flex-row items-center bg-gallery  overflow-hidden mb-8">
             {/* Event Image */}
             <div className="md:w-1/3 w-full">
               <img src={event.image} alt={event.title} className="w-full h-64 object-cover rounded-lg" />
@@ -56,6 +58,7 @@ const Event = () => {
         ))}
       </div>
 
+        </div>
       <Footer />
     </div>
   );

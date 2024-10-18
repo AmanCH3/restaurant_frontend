@@ -12,6 +12,9 @@ const Aboutus
         <NavBar/>
         <div>
 
+            <div className='bg-gallery'>
+
+
         <div>
             <img src={aboutus} alt="Logo of the restuarnt" />
         </div>
@@ -44,7 +47,7 @@ const Aboutus
             </p>
             </div>
 
-            <div className='flex flex-col items-center space-y-3'>
+            <div className='flex flex-col items-center space-y-3 bg-gallery'>
                 <img src={person2} alt="photo of CEO" />
                 <h1 className='font-semibold'>Basudev Adhikair (C.E.O)</h1>
                 <p className='text-center'>I'm Basudev Adhikari , acting on behalf of the CEO of this resturant . You 
@@ -54,8 +57,9 @@ const Aboutus
         </div>
       
         </div>
-        <div className='pt-20'>
+        <div className='pt-20 bg-gallery'>
 
+            </div>
         <Footer/>
         </div>
     </div>

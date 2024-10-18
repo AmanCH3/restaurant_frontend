@@ -6,7 +6,14 @@ export default {
     extend: {
       colors : {
         yell : "#FACF123" ,
+        bg : "#FFFFFF" ,
+        gallery : "#FBFFF5",
+        profile : "#FFF9DE",
        } ,
+
+       fontFamily : {
+        Spartan : ['Spartan'],
+       }
     },
   },
   plugins: [],

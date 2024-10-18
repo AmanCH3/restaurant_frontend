@@ -9,11 +9,11 @@ const Profile = () => {
     <div className='w-max[full]'>
         <NavBar/>
 
-    <div className="flex">
+    <div className="flex mt-20 ">
         
       {/* Sidebar */}
-      <div className="bg-yellow-50 p-2  w-55">
-        <div className="flex flex-col items-center">
+      <div className="bg-profile p-2 w-55">
+        <div className="flex flex-col items-center pt-10">
           <img src={profile} alt="profile picture" className="rounded-full w-24 h-24 mb-4" />
           <h1 className="text-lg font-bold">Aman Chaudhary</h1>
           <p className="text-gray-700">amanchaudhary@gmail.com</p>
@@ -30,7 +30,7 @@ const Profile = () => {
       </div>
 
       {/* Upper Personal Details */}
-      <div className="bg-white space-y-2 p-6 w-3/4">
+      <div className="bg-white space-y-2 p-6 w-3/4 pt-10">
         <h1 className="text-xl font-bold mb-4">Personal Details</h1>
         <form className="space-y-4">
           <div className='space-y-2'>

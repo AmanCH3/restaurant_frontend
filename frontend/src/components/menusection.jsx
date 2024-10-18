@@ -33,7 +33,7 @@ const menus = [
 
 const MenuSection = () => {
   return (
-    <section id='menu'>
+    <section id='menu '>
       <div className="w-full h-full flex flex-wrap justify-between py-12 grid-cols-1 " style={{ gap: "5rem" }}>
         {menus.map((menu, index) => (
           <div key={index} className="w-[300px] h-[400px] rounded-tl-2xl overflow-hidden shadow-md rounded-md">

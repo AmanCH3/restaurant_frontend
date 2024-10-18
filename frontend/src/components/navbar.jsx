@@ -22,12 +22,12 @@ const NavBar = () => {
   }, []);
 
   return (
-    <div className="w-full bg-white flex justify-between items-center h-[80px] px-4 lg:px-16 transition-all duration-300 mx-auto max-w-screen-xl">
+    <div className={`fixed top-0 left-0 w-full bg-bg flex justify-between items-center h-[80px] px-4 lg:px-16 transition-all duration-300 shadow-md ${isScrolled ? "shadow-lg" : "shadow-md"} z-50`}>
       {/* Logo */}
       <img src={logo} alt="Logo" className="w-[50px] h-[60px]" />
 
       {/* Navigation Links */}
-      <ul className="hidden sm:flex gap-6 md:gap-10">
+      <ul className="hidden sm:flex gap-6 md:gap-10 font-Spartan">
         {["Menu", "Gallery", "About us", "Events"].map((item) => (
           <li key={item}>
             <a
@@ -43,7 +43,7 @@ const NavBar = () => {
       {/* Right section: Order button, cart, and profile */}
       <div className="flex items-center gap-4">
         <button
-          className="bg-white text-black px-4 py-2 rounded-md font-bold hover:bg-slate-400 transition-all duration-300 text-xs sm:text-sm border"
+          className="bg-white text-black px-4 py-2 rounded-md font-semibold hover:bg-slate-400 transition-all duration-300 text-xs sm:text-sm border"
           onClick={() => navigate("/order")}
         >
           ORDER NOW
