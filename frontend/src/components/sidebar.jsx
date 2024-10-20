@@ -1,8 +1,20 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
+import { Link, Navigate } from 'react-router-dom';
 import profile from '../assets/profile1.jpg';
+import Orders from '../page/order';
 
 const Sidebar = () => {
+  const [isClicked, setIsClicked] = useState(false);
+
+  const handleProfileClick = () => {
+    // Toggle isClicked state when the button is clicked
+    Navigate("/profile");
+    setIsClicked(!isClicked);
+  };
+
+
+
+
   return (
     <div className="bg-profile p-4 w-70">
       <div className="flex flex-col items-center pt-20">
@@ -10,11 +22,18 @@ const Sidebar = () => {
         <h1 className="text-lg font-bold">Aman Chaudhary</h1>
         <p className="text-gray-700">amanchaudhary@gmail.com</p>
         
-        {/* Correctly link to nested profile routes */}
-        <Link to="/profile" className="bg-green-600 text-white px-4 py-2 rounded-lg flex items-center justify-center my-4">
+        {/* Profile Button with color change on click */}
+        <Link
+          to="/profile"
+          className={`px-4 py-2 rounded-lg flex items-center justify-center my-4 ${isClicked ? 'bg-green-500' : ''} text-black`}
+          onClick={handleProfileClick}
+        >
           Profile
         </Link>
-        <Link to="/profile/orders" className="text-black px-4 py-2 rounded-lg flex items-center justify-center mb-4">
+
+        {/* Other links */}
+       <Link to = "/profile/orders" className={`px-4 py-2 rounded-lg flex items-center justify-center my-4 ${isClicked ? 'bg-green-500' : ''} text-black`}
+      >
           My Orders
         </Link>
         <Link to="/profile/logout" className="text-black px-4 py-2 rounded-lg flex items-center justify-center">

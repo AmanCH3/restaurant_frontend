@@ -1,12 +1,9 @@
 import React from 'react';
-import NavBar from '../components/navbar';
-import Footer from '../components/footer';
+
 
 const Profile = () => {
   return (
-    <div className='bg-white'>
-      {/* Navigation bar */}
-      {/* Main content */}
+    
       <div className="bg-white space-y-2  p-6 pt-20  ">
         {/* Upper Personal Details */}
         <h1 className="text-xl font-bold mb-4">Personal Details</h1>
@@ -103,7 +100,7 @@ const Profile = () => {
           </form>
         </div>
       </div>
-    </div>
+  
   );
 };
 
