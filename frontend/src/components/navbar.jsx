@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import logo from "../assets/navlogo.png";
 import profile from "../assets/profile1.jpg";
 import cart from "../assets/cart1.jpg";
@@ -11,6 +12,10 @@ const NavBar = () => {
   const handleProfileClick = () => {
     navigate("/profile");
   };
+
+  const handleLogoClick = () => {
+    navigate("/") ;
+  }
 
   useEffect(() => {
     const handleScroll = () => {
@@ -24,14 +29,17 @@ const NavBar = () => {
   return (
     <div className={`fixed top-0 left-0 w-full bg-bg flex justify-between items-center h-[80px] px-4 lg:px-16 transition-all duration-300 shadow-md ${isScrolled ? "shadow-lg" : "shadow-md"} z-50`}>
       {/* Logo */}
-      <img src={logo} alt="Logo" className="w-[50px] h-[60px]" />
+      <img src={logo} alt="Logo" className="w-[50px] h-[60px]" 
+      onClick={handleLogoClick}
+      >
+      </img>
 
       {/* Navigation Links */}
       <ul className="hidden sm:flex gap-6 md:gap-10 font-Spartan">
         {["Menu", "Gallery", "About us", "Events"].map((item) => (
           <li key={item}>
             <a
-              href={`#${item.toLowerCase()}`}
+              href={`${item.toLowerCase()}`}
               className="capitalize text-[15px] sm:text-[19px] hover:text-gray-600 transition-all duration-300 cursor-pointer"
             >
               {item}

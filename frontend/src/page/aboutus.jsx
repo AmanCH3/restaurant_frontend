@@ -9,8 +9,11 @@ const Aboutus
  = () => {
   return (
     <div className='max-w-full'>
+        <div className='pb-1'>
+
         <NavBar/>
-        <div>
+        </div>
+        <div className='pt-20'>
 
             <div className='bg-gallery'>
 
@@ -19,7 +22,7 @@ const Aboutus
             <img src={aboutus} alt="Logo of the restuarnt" />
         </div>
 
-        <div className='flex  items-center justify-center m-20'>
+        <div className='flex  items-center justify-center m-20 '>
             <p className='text-center tracking-wide'>
             Our restaurant is a celebration of culinary traditions, offering a rich tapestry of aromatic spices and authentic dishes 
             that transport you to the streets of Kathmandu and the bustling markets of Mumbai. From mouthwatering curries to 
@@ -37,7 +40,7 @@ const Aboutus
 
         {/* image section */}
 
-        <div className='flex flex-row m-20 gap-10 pb-20'>
+        <div className=' bg-gallery flex flex-row m-20 gap-10 pb-20'>
 
             <div className='flex flex-col items-center space-y-3'>
             <img src={person1} alt="lady" />

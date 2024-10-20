@@ -2,13 +2,19 @@ import React from 'react'
 import NavBar from '../components/navbar'
 import Footer from '../components/footer'
 import reservation from '../assets/reservationtable.png'
+import pizza1 from "../assets/menu/pizza1.png";
+import pizza2 from "../assets/menu/pizza2.png";
+import pizza3 from "../assets/menu/pizza3.png";
 
 const Menu = () => {
   return (
     <div className='w-max[full]'>
+      <div className='pb-10'>
         <NavBar/>
 
-        <div>
+      </div>
+
+        <div className='pt-20'>
         <div className="flex flex-row justify-between items-center space-x-4 m-6">
         <section className="border text-black bg-white rounded p-4 w-full">
          Search for food, coffee, etc ...........
@@ -76,7 +82,7 @@ const Menu = () => {
               </div>
 
               <div className="border rounded-lg shadow-lg p-4">
-                 <img src="fish-fusion.jpg" alt="Fish Fusion" className="w-full h-32 object-cover rounded" />
+                 <img src={pizza1} alt="Fish Fusion" className="w-full h-32 object-cover rounded" />
                   <h3 className="text-lg font-semibold mt-2">Fish Fusion</h3>
                     <p className="text-black text-xl">$17.99</p>
                     <div className="mt-4 flex justify-between">
@@ -87,7 +93,7 @@ const Menu = () => {
 
 
               <div className="border rounded-lg shadow-lg p-4">
-                 <img src="fish-fusion.jpg" alt="Fish Fusion" className="w-full h-32 object-cover rounded" />
+                 <img src={pizza2} alt="Fish Fusion" className="w-full h-32 object-cover rounded" />
                   <h3 className="text-lg font-semibold mt-2">Fish Fusion</h3>
                     <p className="text-black text-xl">$17.99</p>
                     <div className="mt-4 flex justify-between">

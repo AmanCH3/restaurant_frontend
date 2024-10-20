@@ -37,11 +37,11 @@
 
     },
     {
-      path : "/event",
+      path : "/events",
       element : <Event />,
     },
     {
-      path : "/aboutus",
+      path : "/about us",
       element : <Aboutus/>
     },
     {

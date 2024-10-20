@@ -10,7 +10,7 @@ const RootLayout = () => {
       <NavBar />
       <div className='flex flex-grow'>
         <Sidebar />
-        <main className='flex-grow p-6 bg-white'>
+        <main className='flex-grow p-6 bg-gallery'>
           {/* This is where the main content will change */}
           <Outlet />
         </main>
