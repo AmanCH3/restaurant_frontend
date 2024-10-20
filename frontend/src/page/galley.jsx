@@ -15,14 +15,14 @@ import amb3 from '../assets/gallery/ambience3.png' ;
 
 const Gallery = () => {
   return (
-    <div className='max-w-full'>
+    <div className='max-w-full '>
       
 
       <NavBar  />
     
-      <div className='bg-gallery'>
+      <div className='bg-gallery '>
 
-      <div className='flex justify-center py-10'>
+      <div className='flex justify-center py-20 mt-10  '>
         <h1 className='font-semibold'>Use the hashtag #thespices to be featured!!</h1>
       </div>
 
