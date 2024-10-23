@@ -14,17 +14,17 @@ const Menu = () => {
 
       </div>
 
-        <div className='pt-20'>
+        <div className='pt-20 bg-gallery'>
         <div className="flex flex-row justify-between items-center space-x-4 m-6">
-        <section className="border text-black bg-white rounded p-4 w-full">
+        <section className="border border-black text-black bg-gallery rounded p-4 w-100">
          Search for food, coffee, etc ...........
          </section>
 
-         <div className="text-black flex space-x-4">
-        <select className="border px-4 py-2 rounded">
+         <div className="text-black flex space-x-4 bg-gallery">
+        <select className="border px-4 py-2 rounded border-black bg-gallery" >
       <option>Select a branch</option>
     </select>
-    <select className="border px-4 py-2 rounded">
+    <select className="border px-4 py-2 rounded border-black bg-gallery">
       <option>Sort By</option>
     </select>
   </div>
@@ -32,7 +32,7 @@ const Menu = () => {
 
 
             <div>
-                <div className='overflow-x-auto flex space-x-4'>
+                <div className='overflow-x-auto flex space-x-4 px-10'>
                     <table className='min-w-full'>
                         <thead>
                             <tr>
@@ -60,17 +60,17 @@ const Menu = () => {
             </div>
 
 
-            <section className="grid grid-cols-4 gap-6 p-4">
+            <section className="grid grid-cols-4 gap-6 p-4 px-10">
                <div className="border rounded-lg shadow-lg p-4">
                  <img src="fish-fusion.jpg" alt="Fish Fusion" className="w-full h-32 object-cover rounded" />
                   <h3 className="text-lg font-semibold mt-2">Fish Fusion</h3>
                     <p className="text-black text-xl">$17.99</p>
-                    <div className="mt-4 flex justify-between">
+                   <div className="mt-4 flex justify-between">
                         <h2>$17.99</h2>
                         <button className="bg-white text-black px-3 y-1 rounded">Order now</button>
                 </div>
               </div>
-  {/* Repeat the card for other menu items */}
+           {/* Repeat the card for other menu items */}
   <div className="border rounded-lg shadow-lg p-4">
                  <img src="fish-fusion.jpg" alt="Fish Fusion" className="w-full h-32 object-cover rounded" />
                   <h3 className="text-lg font-semibold mt-2">Fish Fusion</h3>
@@ -103,15 +103,15 @@ const Menu = () => {
               </div>
 </section>
 
-   <div className="flex justify-center items-center rounded p-2 w-full h-9">
-    <button className='bg-green-700 text-white justify-center rounded '>Explore more </button>
+   <div className="flex justify-center items-center rounded p-2 w-25 h-12">
+    <button className='bg-green-700 w-35 h-8 text-white justify-center rounded-lg p-1 '>Explore more </button>
    </div>
 
-   <div className='relative flex justify-center items-center m-6'>
+   <div className='relative  flex flex-row justify-center items-center px-20 py-10 '>
     <img  src={reservation} alt="reservation table" />
     <div className='absolute text-center justify-center'>
 
-    <h1 className='text-white ' >
+    <h1 className='text-white' >
       Dine in Style : Guarantee Your Spot at "The Spices" with a Reservation! 
     </h1>
     </div>
