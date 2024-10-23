@@ -9,12 +9,12 @@ const Login = () => {
   return (
 
     <div className='w-max[full]'>
-
+      <div className='mb-20'>
       <NavBar />
-    <div className="relative min-h-screen z-10 flex flex-col justify-between">
-      {/* Navbar */}
 
-      {/* Background Image */}
+      </div>
+    <div className="relative min-h-screen z-10 flex flex-col justify-between pt-10">
+   
       <div className="absolute inset-0 z-0 w-full h-full">
         <img src={background} alt="Login background" className="w-full h-full object-cover" />
       </div>
