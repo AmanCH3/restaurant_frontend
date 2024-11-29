@@ -2,3 +2,21 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* @font-face {
+  font-family: 'Spartan';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../fonts/Spartan-Regular.ttf') format('truetype');
+} */
+/* 
+@font-face {
+    font-family: 'Spartan';
+    font-style: normal;
+    font-weight: 500;
+    src: url('../fonts/Spartan-Medium.ttf') format('truetype');
+  } */
+
+  * {
+    font-family: 'Spartan', sans-serif;
+  }

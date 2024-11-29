@@ -4,15 +4,27 @@ import NavBar from '../components/navbar';
 import Footer from '../components/footer';
 import facebook from '../assets/facebooklogo.png';
 import google from '../assets/googlelogo.png';
+import AuthContext  from '../context/AuthContext.jsx';
+import {useContext} from 'react';
+import {Link} from 'react-router-dom';
 
 const Login = () => {
+  const {loginUser} = useContext(AuthContext)  ;
+  const handleSubmit = e => {
+    e.preventDefault()
+    const email = e.target.email.value
+    const password = e.target.password.value
+
+    email.length > 0 && loginUser(email, password)
+
+    console.log(email)
+    console.log(password)
+
+  }
+
   return (
 
-    <div className='w-max[full]'>
-      <div className='mb-20'>
-      <NavBar />
-
-      </div>
+    <div className='max-w-full mt-20'>
     <div className="relative min-h-screen z-10 flex flex-col justify-between pt-10">
    
       <div className="absolute inset-0 z-0 w-full h-full">
@@ -36,7 +48,7 @@ const Login = () => {
             </button>
           </div>
 
-          <form className="space-y-4 mb-6">
+          <form onClick={handleSubmit} className="space-y-4 mb-6">
             <div>
               <label htmlFor="email" className="block text-sm font-medium text-gray-700">Email</label>
               <input 
@@ -44,6 +56,7 @@ const Login = () => {
                 id="email" 
                 className="w-full p-2 border border-gray-300 rounded-lg" 
                 placeholder="E.g. johndoe@gmail.com" 
+                value={handleSubmit}
                 required 
                 />
             </div>
@@ -55,6 +68,7 @@ const Login = () => {
                 id="password" 
                 className="w-full p-2 border border-gray-300 rounded-lg" 
                 placeholder="Enter your password" 
+               value={handleSubmit}
                 required 
                 />
             </div>
@@ -71,7 +85,7 @@ const Login = () => {
           <div className="flex flex-col items-center space-y-4">
             <button className="w-full py-2 bg-green-700 text-white rounded-lg">Login</button>
             <h2 className="text-sm">
-              Not registered yet? <a href="#" className="text-green-700 hover:underline">Create an account</a>
+              Not registered yet? <Link to="/register" className="text-green-700 hover:underline">Create an account</Link>
             </h2>
           </div>
           
@@ -80,7 +94,7 @@ const Login = () => {
 
      
     </div>
-      <Footer />
+     
                 </div>
   );
 };

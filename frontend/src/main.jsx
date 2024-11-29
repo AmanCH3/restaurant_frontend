@@ -1,32 +1,40 @@
   import { StrictMode } from 'react';
-  import { createRoot } from 'react-dom/client';
-  import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-  import App from './App.jsx';
-  import './index.css';
-  import Login from './page/Login.jsx' ;
-  import SignUp from './page/signup.jsx';
-  import Logout from "./page/logout.jsx" ;
-  import Profile from './page/profile.jsx';
-  import MenuPage from './page/menu.jsx' ;
-  import Gallery from './page/galley.jsx' ;
-  import Event  from './page/event.jsx';
-  import Aboutus from './page/aboutus.jsx';
-  import Orders from "./page/order.jsx" ;
-  import RootLayout from "./components/layout.jsx"
+import { createRoot } from 'react-dom/client';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import App from './App.jsx';
+import RootLayout from "./components/layout.jsx";
+import './index.css';
+import Layout from './layout.jsx';
+import Aboutus from './page/aboutus.jsx';
+import Event from './page/event.jsx';
+import Gallery from './page/galley.jsx';
+import Login from './page/login.jsx';
+import Logout from "./page/logout.jsx";
+import MenuPage from './page/menu.jsx';
+import Orders from "./page/order.jsx";
+import Profile from './page/profile.jsx';
+import SignUp from './page/signup.jsx';
 
   const router = createBrowserRouter([
     {
       path: '/',
-      element: <App />,
+      element: <Layout />,
+      children: [
+        {
+          path:"",
+          element: <App />
+        },
+        {
+          path: 'login',
+          element: <Login />, 
+        },
+        {
+          path: 'signup',
+          element: <SignUp />, 
+        },
+      ]
     },
-    {
-      path: '/login',
-      element: <Login />, 
-    },
-    {
-      path: '/signup',
-      element: <SignUp />, 
-    },
+   
     {
       path : '/menu',
       element : <MenuPage />,
@@ -67,6 +75,6 @@
 
   createRoot(document.getElementById('root')).render(
     <StrictMode>
-      <RouterProvider router={router} />
+        <RouterProvider router={router} />
     </StrictMode>
   );

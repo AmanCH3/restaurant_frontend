@@ -14,7 +14,6 @@ function App() {
     <div className='bg-gallery min-h-screen'>
   
         
-      <Navbar />
       <Herosection/>
       <BoookingSection/>
       <MenuSection/>
@@ -22,8 +21,7 @@ function App() {
       <TableSection/>
       <Banner/>
       <Services/>
-      <Footer/>
-       </div>
+    </div>
     
   ) ;
 }
