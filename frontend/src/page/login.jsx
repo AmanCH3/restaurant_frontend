@@ -7,20 +7,50 @@ import google from '../assets/googlelogo.png';
 import AuthContext  from '../context/AuthContext.jsx';
 import {useContext} from 'react';
 import {Link} from 'react-router-dom';
+import {useState} from 'react';
 
 const Login = () => {
-  const {loginUser} = useContext(AuthContext)  ;
-  const handleSubmit = e => {
+  const [formData, setformData] = useState({
+    email: "",
+    password: "",
+  });
+  
+
+  //state to mange validation errors
+  const [errors, setErrors] = useState({});
+
+ //access the loginUser function from the AuthContext
+  const {loginUser} = useContext(AuthContext) ;
+
+
+   /**
+    *  Handle form submission.
+    *  Validates the input and calls the loginUser function.
+    *  
+    */
+  const handleSubmit =  async (e) => {
     e.preventDefault()
-    const email = e.target.email.value
-    const password = e.target.password.value
+    const {email, password} = formData
+    console.log(formData)
 
-    email.length > 0 && loginUser(email, password)
+   try{
+      //Attempt login using AuthContext
+      await loginUser(email, password);
+   }
+   catch(err){
+      //Handle errors from the server response
+     setErrors(err.response?.data || {general: "An error occurred. Please try again."});
+    }
+  };
 
-    console.log(email)
-    console.log(password)
+  const handleChange = (e) => {
+    setformData({
+      ...formData,
+      [e.target.id]: e.target.value,
+    });
+    setErrors({});
+  };
 
-  }
 
   return (
 
@@ -56,7 +86,8 @@ const Login = () => {
                 id="email" 
                 className="w-full p-2 border border-gray-300 rounded-lg" 
                 placeholder="E.g. johndoe@gmail.com" 
-                value={handleSubmit}
+                value= {formData.email}
+                onChange={handleChange}
                 required 
                 />
             </div>
@@ -68,11 +99,12 @@ const Login = () => {
                 id="password" 
                 className="w-full p-2 border border-gray-300 rounded-lg" 
                 placeholder="Enter your password" 
-               value={handleSubmit}
+               value={formData.password}
+               onChange={handleChange}
                 required 
                 />
             </div>
-          </form>
+
 
           <div className="flex justify-between mb-6">
             <label className="flex items-center">
@@ -88,6 +120,9 @@ const Login = () => {
               Not registered yet? <Link to="/register" className="text-green-700 hover:underline">Create an account</Link>
             </h2>
           </div>
+          
+          </form>
+
           
         </div>
       </div>

@@ -2,7 +2,6 @@ import { createContext, useState, useEffect } from "react";
 import {jwtDecode} from "jwt-decode"
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
-import { useContext } from "react";
 
 const AuthContext = createContext();
 
@@ -10,12 +9,12 @@ export default AuthContext;
 
 export const AuthProvider = ({ children }) => {
   const [authTokens, setAuthTokens] = useState(() => {
-    const tokens = localStorage.getItem("authTokens");
+    const tokens = localStorage.getItem("access");
     return tokens ? JSON.parse(tokens) : null;
   });
 
   const [user, setUser] = useState(() => {
-    const tokens = localStorage.getItem("authTokens");
+    const tokens = localStorage.getItem("access");
     return tokens ? jwtDecode(tokens) : null;
   });
 
@@ -31,15 +30,15 @@ export const AuthProvider = ({ children }) => {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ email, password }),
+        body: JSON.stringify({email, password }),
       });
-      console.log(response);
+      console.log(response.formData)
 
       if (response.ok) {
         const data = await response.json();
         setAuthTokens(data);
         setUser(jwtDecode(data.access));
-        localStorage.setItem("authTokens", JSON.stringify(data));
+        localStorage.setItem("access", JSON.stringify(data));
         Swal.fire({
           title: "Login Successful",
           icon: "success",
@@ -119,7 +118,7 @@ export const AuthProvider = ({ children }) => {
   const logoutUser = () => {
     setAuthTokens(null);
     setUser(null);
-    localStorage.removeItem("authTokens");
+    localStorage.removeItem("access");
     Swal.fire({
       title: "Logged Out",
       icon: "success",
