@@ -13,6 +13,8 @@
     "@angular/material": "^18.2.9",
     "@heroicons/react": "^2.1.5",
     "@material-tailwind/react": "^2.1.10",
+    "axios": "^1.7.8",
+    "dayjs": "^1.11.13",
     "jwt-decode": "^4.0.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
