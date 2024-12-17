@@ -31,6 +31,8 @@ export const createReservation = async ({resturant, name, date, time, email, num
         position: "top-right",
         timerProgressBar: true,
         showConfirmButton: false,
+      }).then(() => {
+        window.location.reload();
       });
       return data;
     } else {
