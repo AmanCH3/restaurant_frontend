@@ -1,106 +1,149 @@
-import React from 'react';
+import React, { useState, useEffect, useContext } from 'react';
+import axios from 'axios';
+import AuthContext from '../context/AuthContext';
 
+
+
+const baseURL = "http://127.0.0.1:8000/api"; 
 
 const Profile = () => {
+  const {authTokens, setAuthTokens, setUser } = useContext(AuthContext); 
+  console.log("Checking the auth token " , authTokens) ;
+  const [profile, setProfile] = useState({
+    fullname: '',
+    email: '',
+    address: '',
+    phone: '',
+  });
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const [isUpdating, setIsUpdating] = useState(false);
+
+  // Fetch user profile on component mount
+  useEffect(() => {
+    const fetchProfile = async () => {
+
+     
+      try {
+        const response = await axios.get(`${baseURL}/profile/`, {
+          
+          headers: {
+            Authorization: `Bearer ${authTokens?.access}`,
+          },
+        });
+        setProfile(response.data);
+        setLoading(false);
+      } catch (err) {
+        setError('Failed to load profile');
+        setLoading(false);
+      }
+    };
+
+    if (authTokens?.access) {
+      fetchProfile();
+    } else {
+      setLoading(false);
+      setError('You need to log in first');
+    }
+  }, [authTokens]);
+
+  // Handle input field changes
+  const handleChange = (e) => {
+    const { id, value } = e.target;
+    setProfile((prevProfile) => ({
+      ...prevProfile,
+      [id]: value,
+    }));
+  };
+
+  // Handle profile update
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setIsUpdating(true);
+    try {
+      const response = await axios.put(`${baseURL}/profile/`, profile, {
+        headers: {
+          Authorization: `Bearer ${authTokens?.access}`,
+        },
+      });
+      setProfile(response.data);
+      setIsUpdating(false);
+      alert('Profile updated successfully');
+    } catch (err) {
+      setError('Failed to update profile');
+      setIsUpdating(false);
+    }
+  };
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>Error: {error}</div>;
+  }
+
   return (
-    
-      <div className="bg-white space-y-2  p-6 pt-20  ">
-        {/* Upper Personal Details */}
-        <h1 className="text-xl font-bold mb-4">Personal Details</h1>
-        <form className="space-y-4">
-          <div className='space-y-2'>
-            <label htmlFor="name" className="block text-sm font-medium text-gray-700">Name</label>
-            <input 
-              type="text" 
-              id="name" 
-              className="w-full p-2 border border-gray-300 rounded-lg" 
-              placeholder="Enter your name" 
-              required 
-            />
-          </div>
-
-          <div className='space-y-2'>
-            <label htmlFor="email" className="block text-sm font-medium text-gray-700">E-mail</label>
-            <input 
-              type="email" 
-              id="email" 
-              className="w-full p-2 border border-gray-300 rounded-lg" 
-              placeholder="jhondoe@gmail.com" 
-              required 
-            />
-          </div>
-
-          <div className='space-y-2'>
-            <label htmlFor="address" className="block text-sm font-medium text-gray-700">My Address</label>
-            <input 
-              type="text" 
-              id="address" 
-              className="w-full p-2 border border-gray-300 rounded-lg" 
-              placeholder="830 N WATER ST. SHEBOYGAN, WI" 
-              required 
-            />
-          </div>
-
-          <div className='space-y-2'>
-            <label htmlFor="contact" className="block text-sm font-medium text-gray-700">Phone</label>
-            <input 
-              type="tel" 
-              id="contact" 
-              className="w-full p-2 border border-gray-300 rounded-lg" 
-              placeholder="9810800087" 
-              required 
-            />
-          </div>
-
-          <div className="flex justify-center">
-            <button className="w-32 py-2 bg-green-700 flex justify-center text-white rounded-lg">Save</button>
-          </div>
-        </form>
-
-        {/* Lower Account Settings */}
-        <div className="mt-8">
-          <h1 className="text-xl font-bold mb-4">Account Settings</h1>
-          <form className="space-y-4">
-            <div className='space-y-2'>
-              <label htmlFor="password" className="block text-sm font-medium text-gray-700">Current Password</label>
-              <input 
-                type="password" 
-                id="password" 
-                className="w-full p-2 border border-gray-300 rounded-lg" 
-                placeholder="Enter your password" 
-                required 
-              />
-            </div>
-
-            <div className='space-y-2'>
-              <label htmlFor="newpassword" className="block text-sm font-medium text-gray-700">New Password</label>
-              <input 
-                type="password" 
-                id="newpassword" 
-                className="w-full p-2 border border-gray-300 rounded-lg" 
-                placeholder="Enter your new password" 
-                required 
-              />
-            </div>
-
-            <div className='space-y-2'>
-              <label htmlFor="confirmpassword" className="block text-sm font-medium text-gray-700">Confirm Password</label>
-              <input 
-                type="password" 
-                id="confirmpassword" 
-                className="w-full p-2 border border-gray-300 rounded-lg" 
-                placeholder="Confirm your new password" 
-                required 
-              />
-            </div>
-
-            <div className="flex justify-center">
-              <button className="w-32 justify-center py-2 bg-green-700 text-white rounded-lg">Save</button>
-            </div>
-          </form>
+    <div className="profile-container">
+      <h1 className="text-2xl font-bold mb-4">Profile</h1>
+      <form onSubmit={handleSubmit}>
+        <div className="form-group">
+          <label htmlFor="fullname" className="block text-sm">Full Name</label>
+          <input
+            type="text"
+            id="fullname"
+            value={profile.fullname}
+            onChange={handleChange}
+            className="input-field"
+            required
+          />
         </div>
-      </div>
-  
+
+        <div className="form-group">
+          <label htmlFor="email" className="block text-sm">Email</label>
+          <input
+            type="email"
+            id="email"
+            value={profile.email}
+            onChange={handleChange}
+            className="input-field"
+            required
+          />
+        </div>
+
+        <div className="form-group">
+          <label htmlFor="address" className="block text-sm">Address</label>
+          <input
+            type="text"
+            id="address"
+            value={profile.address}
+            onChange={handleChange}
+            className="input-field"
+            required
+          />
+        </div>
+
+        <div className="form-group">
+          <label htmlFor="phone" className="block text-sm">Phone</label>
+          <input
+            type="text"
+            id="phone"
+            value={profile.phone}
+            onChange={handleChange}
+            className="input-field"
+            required
+          />
+        </div>
+
+        <button
+          type="submit"
+          className={`submit-button ${isUpdating ? 'loading' : ''}`}
+          disabled={isUpdating}
+        >
+          {isUpdating ? 'Updating...' : 'Update Profile'}
+        </button>
+      </form>
+    </div>
   );
 };
 

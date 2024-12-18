@@ -30,7 +30,7 @@ import SignUp from './page/signup.jsx';
         },
         {
           path: 'signup',
-          element: <SignUp />, 
+          element: <SignUp/>, 
         },
       ]
     },

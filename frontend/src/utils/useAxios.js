@@ -9,28 +9,42 @@ export const baseURL = "http://127.0.0.1:8000/api";
 const useAxios = () => {
   const { authTokens, setUser, setAuthTokens } = useContext(AuthContext);
 
+  // Return early if authTokens are not available
+  if (!authTokens) {
+    throw new Error("Authentication tokens are missing.");
+  }
+
   const axiosInstance = axios.create({
     baseURL,
     headers: { Authorization: `Bearer ${authTokens?.access}` }
   });
 
   axiosInstance.interceptors.request.use(async req => {
-    const user = jwt_decode(authTokens.access);
-    const isExpired = dayjs.unix(user.exp).diff(dayjs()) < 1;
+    try {
+      // Decode token only when necessary
+      const user = jwt_decode(authTokens.access);
+      const isExpired = dayjs.unix(user.exp).diff(dayjs()) < 1;
 
-    if (!isExpired) return req;
+      if (!isExpired) return req;
 
-    const response = await axios.post(`${baseURL}/token/refresh/`, {
-      refresh: authTokens.refresh
-    });
-    localStorage.setItem("authTokens", JSON.stringify(response.data));
-    localStorage.setItem("authTokens", JSON.stringify(response.data));
+      // If the token is expired, refresh it
+      const response = await axios.post(`${baseURL}/token/refresh/`, {
+        refresh: authTokens.refresh
+      });
 
-    setAuthTokens(response.data);
-    setUser(jwt_decode(response.data.access));
+      // Save new tokens in localStorage and context
+      localStorage.setItem("authTokens", JSON.stringify(response.data)); // Only one call
+      setAuthTokens(response.data);
+      setUser(jwt_decode(response.data.access));
 
-    req.headers.Authorization = `Bearer ${response.data.access}`;
-    return req;
+      req.headers.Authorization = `Bearer ${response.data.access}`;
+      return req;
+
+    } catch (error) {
+      // Handle the error appropriately, maybe log out the user or notify them
+      console.error("Error in Axios interceptor:", error);
+      throw error;
+    }
   });
 
   return axiosInstance;

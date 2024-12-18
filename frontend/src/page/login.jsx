@@ -117,7 +117,7 @@ const Login = () => {
           <div className="flex flex-col items-center space-y-4">
             <button className="w-full py-2 bg-green-700 text-white rounded-lg">Login</button>
             <h2 className="text-sm">
-              Not registered yet? <Link to="/register" className="text-green-700 hover:underline">Create an account</Link>
+              Not registered yet? <Link to="/signup" className="text-green-700 hover:underline">Create an account</Link>
             </h2>
           </div>
           
