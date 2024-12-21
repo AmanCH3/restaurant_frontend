@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import  { useEffect, useState } from 'react';
 import NavBar from '../components/navbar';
 import Footer from '../components/footer';
-import reservation from '../assets/reservationtable.png';
 import { baseURL } from '../utils/useAxios';
 
 const Menu = () => {

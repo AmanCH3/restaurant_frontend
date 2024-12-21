@@ -1,7 +1,7 @@
 import { createContext, useState, useEffect } from "react";
 import {jwtDecode} from "jwt-decode"
-import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 
 const AuthContext = createContext();
 
@@ -154,4 +154,3 @@ export const AuthProvider = ({ children }) => {
     </AuthContext.Provider>
   );
 };
-

@@ -22,7 +22,7 @@ const useAxios = () => {
   axiosInstance.interceptors.request.use(async req => {
     try {
       // Decode token only when necessary
-      const user = jwt_decode(authTokens.access);
+      const user = jwtDecode(authTokens.access);
       const isExpired = dayjs.unix(user.exp).diff(dayjs()) < 1;
 
       if (!isExpired) return req;
@@ -35,7 +35,7 @@ const useAxios = () => {
       // Save new tokens in localStorage and context
       localStorage.setItem("authTokens", JSON.stringify(response.data)); // Only one call
       setAuthTokens(response.data);
-      setUser(jwt_decode(response.data.access));
+      setUser(jwtDecode(response.data.access));
 
       req.headers.Authorization = `Bearer ${response.data.access}`;
       return req;

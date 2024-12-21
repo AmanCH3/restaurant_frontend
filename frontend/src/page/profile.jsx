@@ -1,14 +1,11 @@
-import React, { useState, useEffect, useContext } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 import AuthContext from '../context/AuthContext';
-
-
 
 const baseURL = "http://127.0.0.1:8000/api"; 
 
 const Profile = () => {
-  const {authTokens, setAuthTokens, setUser } = useContext(AuthContext); 
-  console.log("Checking the auth token " , authTokens) ;
+  const authTokens = useContext(AuthContext); 
   const [profile, setProfile] = useState({
     fullname: '',
     email: '',
@@ -22,13 +19,16 @@ const Profile = () => {
   // Fetch user profile on component mount
   useEffect(() => {
     const fetchProfile = async () => {
+      if (!authTokens?.access) {
+        setLoading(false);
+        setError('You need to log in first');
+        return;
+      }
 
-     
       try {
         const response = await axios.get(`${baseURL}/profile/`, {
-          
           headers: {
-            Authorization: `Bearer ${authTokens?.access}`,
+            Authorization: `Bearer ${authTokens.access}`,
           },
         });
         setProfile(response.data);
@@ -39,12 +39,7 @@ const Profile = () => {
       }
     };
 
-    if (authTokens?.access) {
-      fetchProfile();
-    } else {
-      setLoading(false);
-      setError('You need to log in first');
-    }
+    fetchProfile();
   }, [authTokens]);
 
   // Handle input field changes
@@ -63,14 +58,19 @@ const Profile = () => {
     try {
       const response = await axios.put(`${baseURL}/profile/`, profile, {
         headers: {
-          Authorization: `Bearer ${authTokens?.access}`,
+          Authorization: `Bearer ${authTokens.access}`,
         },
       });
-      setProfile(response.data);
-      setIsUpdating(false);
-      alert('Profile updated successfully');
-    } catch (err) {
-      setError('Failed to update profile');
+
+      if (response.status === 200) {
+        setProfile(response.data);
+        setIsUpdating(false);
+        alert('Profile updated successfully');
+      } else {
+        throw new Error('Failed to update profile');
+      }
+    } catch (error) {
+      setError(error , 'Failed to update profile');
       setIsUpdating(false);
     }
   };
