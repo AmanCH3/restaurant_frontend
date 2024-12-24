@@ -14,6 +14,7 @@ import MenuPage from './page/menu.jsx';
 import Orders from './page/order.jsx';
 import Profile from './page/profile.jsx';
 import SignUp from './page/signup.jsx';
+import Cart from './page/cart.jsx';
 
 // Define routes
 const routes = [
@@ -30,6 +31,7 @@ const routes = [
   { path: '/gallery', element: <Gallery /> },
   { path: '/events', element: <Event /> },
   { path: '/about us', element: <Aboutus /> },
+  {path : '/cart', element: <Cart/>},
   {
     path: '/profile',
     element: <Layout />, // Could also use a dedicated ProfileLayout if needed

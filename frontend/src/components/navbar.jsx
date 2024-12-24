@@ -16,6 +16,9 @@ const NavBar = () => {
   const handleLogoClick = () => {
     navigate("/") ;
   }
+  const handleCartClick = () => {
+    navigate("/cart");
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -61,6 +64,7 @@ const NavBar = () => {
           src={cart}
           alt="Shopping Cart"
           className="w-8 h-8 sm:w-10 sm:h-8 rounded-full object-cover cursor-pointer hover:opacity-80 transition-opacity duration-300"
+          onClick={handleCartClick}
         />
 
         <img
