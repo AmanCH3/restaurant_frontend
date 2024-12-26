@@ -2,6 +2,7 @@ import { createContext, useState, useEffect } from "react";
 import {jwtDecode} from "jwt-decode"
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
+import { baseURL } from "../utils/useAxios";
 
 const AuthContext = createContext();
 
@@ -25,7 +26,7 @@ export const AuthProvider = ({ children }) => {
   // Login User
   const loginUser = async (email, password) => {
     try {
-      const response = await fetch("http://127.0.0.1:8000/api/token/", {
+      const response = await fetch(`${baseURL}/token/`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -77,7 +78,7 @@ export const AuthProvider = ({ children }) => {
   // Register User
   const registerUser = async (email, username, password, password2) => {
     try {
-      const response = await fetch("http://127.0.0.1:8000/api/register/", {
+      const response = await fetch(`${baseURL}/register/`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
