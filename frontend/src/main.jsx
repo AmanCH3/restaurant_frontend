@@ -25,6 +25,10 @@ const routes = [
       { path: '', element: <App /> },
       { path: 'login', element: <Login /> },
       { path: 'signup', element: <SignUp /> },
+      { path: 'menu', element: <MenuPage /> },
+      { path: 'gallery', element: <Gallery /> },
+      { path: 'events', element: <Event /> },
+      { path: 'aboutus', element: <Aboutus /> },
       { 
         path: "profile", 
         children: [
@@ -35,11 +39,6 @@ const routes = [
       },
     ],  
   },
-  { path: '/menu', element: <MenuPage /> },
-  { path: '/gallery', element: <Gallery /> },
-  { path: '/events', element: <Event /> },
-  { path: '/aboutus', element: <Aboutus /> },
-  { path : '/cart', element: <Cart/>},
   { path: '*', element: <div>404 - Page Not Found</div> }, // Fallback for undefined routes
 ];
 

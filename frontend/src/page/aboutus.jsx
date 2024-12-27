@@ -2,8 +2,7 @@ import React from 'react'
 import NavBar from '../components/navbar';
 import Footer from '../components/footer';
 
-const Aboutus
- = () => {
+function Aboutus(){
   return (
     <div className='max-w-full'>
         <div className='pb-1'>
