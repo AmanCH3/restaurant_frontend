@@ -2,6 +2,8 @@ import { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 import AuthContext from '../context/AuthContext';
 import { baseURL } from '../utils/useAxios';
+import { useNavigate } from 'react-router-dom';
+
 const Profile = () => {
   const authTokens = useContext(AuthContext); 
   const [profile, setProfile] = useState({
@@ -11,15 +13,15 @@ const Profile = () => {
     phone: '',
   });
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
   const [isUpdating, setIsUpdating] = useState(false);
+  const navigate = useNavigate();
 
   // Fetch user profile on component mount
   useEffect(() => {
     const fetchProfile = async () => {
-      if (!authTokens?.access) {
-        setLoading(false);
-        setError('You need to log in first');
+      if (!authTokens?.access) {        
+        // Redirect to login if not authenticated
+        navigate("/login");
         return;
       }
 
@@ -30,9 +32,9 @@ const Profile = () => {
           },
         });
         setProfile(response.data);
-        setLoading(false);
       } catch (err) {
-        setError('Failed to load profile');
+        console.log(err);
+      } finally {
         setLoading(false);
       }
     };
@@ -75,10 +77,6 @@ const Profile = () => {
 
   if (loading) {
     return <div>Loading...</div>;
-  }
-
-  if (error) {
-    return <div>Error: {error}</div>;
   }
 
   return (

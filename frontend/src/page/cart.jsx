@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { baseURL } from "../utils/useAxios";
 
 const Cart = () => {
   const [cartItems, setCartItems] = useState([]);
@@ -23,8 +24,9 @@ const Cart = () => {
   }, []);
 
   const calculateTotal = () => {
-    const total = cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0);
-    return (total - promoDiscount).toFixed(2);
+    const total = cartItems?.reduce((acc, item) => acc + item.price * item.quantity, 0);
+
+    return total ? total.toFixed(2) : "0.00";
   };
 
   const handlePromoApply = () => {
@@ -49,7 +51,7 @@ const Cart = () => {
               <p className="text-sm text-gray-600">{item.description}</p>
             </div>
             <div className="text-right">
-              <p className="font-bold text-lg">${item.price.toFixed(2)}</p>
+              <p className="font-bold text-lg">${item.price?.toFixed(2)}</p>
               <div className="flex items-center justify-end space-x-2 mt-2">
                 <button className="px-2 py-1 border rounded">-</button>
                 <span className="px-2">{item.quantity}</span>

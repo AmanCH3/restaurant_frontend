@@ -18,6 +18,8 @@ const Event = () => {
           throw new Error('Failed to fetch events');
         }
         const data = await response.json();
+
+        console.log(data);
         setEvents(data);  // Store the fetched events data
         setLoading(false); // Set loading to false after data is fetched
       } catch (error) {

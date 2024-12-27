@@ -25,22 +25,21 @@ const routes = [
       { path: '', element: <App /> },
       { path: 'login', element: <Login /> },
       { path: 'signup', element: <SignUp /> },
-    ],
+      { 
+        path: "profile", 
+        children: [
+          { path: '', element: <Profile /> },
+          { path: "orders", element: <Orders /> },
+          { path: "logout", element: <Logout /> },
+        ]
+      },
+    ],  
   },
   { path: '/menu', element: <MenuPage /> },
   { path: '/gallery', element: <Gallery /> },
   { path: '/events', element: <Event /> },
-  { path: '/about us', element: <Aboutus /> },
-  {path : '/cart', element: <Cart/>},
-  {
-    path: '/profile',
-    element: <Layout />, // Could also use a dedicated ProfileLayout if needed
-    children: [
-      { index: true, element: <Profile /> }, // Default profile route
-      { path: 'orders', element: <Orders /> },
-      { path: 'logout', element: <Logout /> },
-    ],
-  },
+  { path: '/aboutus', element: <Aboutus /> },
+  { path : '/cart', element: <Cart/>},
   { path: '*', element: <div>404 - Page Not Found</div> }, // Fallback for undefined routes
 ];
 
