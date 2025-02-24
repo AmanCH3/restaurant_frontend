@@ -1,9 +1,8 @@
 import Swal from "sweetalert2";
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect } from "react";
 import booking from "../assets/booking.png";
 import { baseURL } from "../utils/useAxios";
 import { createReservation } from "../utils/reservation";
-
 
 const TableSection = () => {
   const [reservationData, setReservationData] = useState({
@@ -23,7 +22,6 @@ const TableSection = () => {
     const fetchRestaurants = async () => {
       try {
         const response = await fetch(`${baseURL}/restaurant/`);
-        
         if (!response.ok) {
           throw new Error("Failed to fetch restaurants");
         }
@@ -36,18 +34,25 @@ const TableSection = () => {
     fetchRestaurants();
   }, []);
 
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     const { resturant, name, date, time, email, number_of_people, notes } = reservationData;
-    console.log(reservationData)
     try {
-      await createReservation({resturant, name, date, time, email, number_of_people, notes});
+      await createReservation({ resturant, name, date, time, email, number_of_people, notes });
+      Swal.fire({
+        icon: 'success',
+        title: 'Reservation Successful!',
+        text: 'Your table has been booked.',
+      });
     } catch (error) {
       console.error("Error during reservation:", error);
+      Swal.fire({
+        icon: 'error',
+        title: 'Reservation Failed',
+        text: 'There was an error booking your table. Please try again.',
+      });
     }
   };
-
 
   const handleChange = (e) => {
     setReservationData({
@@ -64,120 +69,122 @@ const TableSection = () => {
           <img src={booking} alt="table image" className="w-full h-full object-cover" />
         </div>
 
-        <section className="relative z-10 flex flex-col bg-white border shadow-sm rounded-lg items-stretch mx-20 mt-12">
-       <h1 className="text-lg font-bold mb-4 mx-6">Book a Table</h1>
-         <form onSubmit={handleSubmit} className="flex flex-col gap-4 space-y-4 px-6">
+        <section className="relative z-10 bg-white border border-gray-200 shadow-sm rounded-lg mx-4 md:mx-20 -mt-20 p-8">
+          <h1 className="text-2xl font-semibold mb-6">Book a Table</h1>
+          <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
 
-    {/* Restaurant Selection */}
-      <div className="flex flex-col">
-      <label htmlFor="resturant" className="block text-sm font-medium mb-1">
-        Select Restaurant
-      </label>
-      <select
-        name="resturant"
-        value={reservationData.resturant}
-        onChange={handleChange}
-        className="w-full p-2 mb-4 border border-gray-300 rounded"
-      >
-        <option value="">Select a restaurant</option>
-        {resturantData.map((restaurant) => (
-          <option key={restaurant.id} value={restaurant.id}>
-            {restaurant.name}
-          </option>
-        ))}
-      </select>
-    </div>
+            {/* Restaurant Selection */}
+            <div className="flex flex-col">
+              <label htmlFor="resturant" className="text-sm font-medium text-gray-700 mb-1">
+                Select Restaurant
+              </label>
+              <select
+                name="resturant"
+                value={reservationData.resturant}
+                onChange={handleChange}
+                className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
+              >
+                <option value="">Select a restaurant</option>
+                {resturantData.map((restaurant) => (
+                  <option key={restaurant.id} value={restaurant.id}>
+                    {restaurant.name}
+                  </option>
+                ))}
+              </select>
+            </div>
 
-    {/* Name */}
-    <div className="flex flex-col">
-      <label htmlFor="name" className="block text-sm font-medium mb-1">
-        Name
-      </label>
-      <input
+            {/* Name */}
+            <div className="flex flex-col">
+              <label htmlFor="name" className="text-sm font-medium text-gray-700 mb-1">
+                Name
+              </label>
+              <input
+                type="text"
+                name="name"
+                value={reservationData.name}
+                onChange={handleChange}
+                className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
+              />
+            </div>
 
-        type="text"
-        name="name"
-        value={reservationData.name}
-        onChange={handleChange}
-        className="w-full p-2 mb-4 border border-gray-300 rounded"
-      />
-    </div>
+            {/* Date and Time */}
+            <div className="flex flex-col">
+              <label htmlFor="date" className="text-sm font-medium text-gray-700 mb-1">
+                Date
+              </label>
+              <input
+                type="date"
+                name="date"
+                value={reservationData.date}
+                onChange={handleChange}
+                className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
+              />
+            </div>
+            <div className="flex flex-col">
+              <label htmlFor="time" className="text-sm font-medium text-gray-700 mb-1">
+                Time
+              </label>
+              <input
+                type="time"
+                name="time"
+                value={reservationData.time}
+                onChange={handleChange}
+                className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
+              />
+            </div>
 
-    {/* Date */}
-    <div className="flex flex-col">
-      <label htmlFor="date" className="block text-sm font-medium mb-1">
-        Date
-      </label>
-      <input
-        type="date"
-        name="date"
-        value={reservationData.date}
-        onChange={handleChange}
-        className="w-full p-2 mb-4 border border-gray-300 rounded"
-      />
-    </div>
+            {/* Email */}
+            <div className="flex flex-col">
+              <label htmlFor="email" className="text-sm font-medium text-gray-700 mb-1">
+                Email
+              </label>
+              <input
+                type="email"
+                name="email"
+                value={reservationData.email}
+                onChange={handleChange}
+                className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
+              />
+            </div>
 
-    {/* Time */}
-    <div className="flex flex-col">
-      <label htmlFor="time" className="block text-sm font-medium mb-1">
-        Time
-      </label>
-      <input
-        type="time"
-        name="time"
-        value={reservationData.time}
-        onChange={handleChange}
-        className="w-full p-2 mb-4 border border-gray-300 rounded"
-      />
-    </div>
+            {/* Number of People */}
+            <div className="flex flex-col">
+              <label htmlFor="number_of_people" className="text-sm font-medium text-gray-700 mb-1">
+                Number of People
+              </label>
+              <input
+                type="number"
+                name="number_of_people"
+                value={reservationData.number_of_people}
+                onChange={handleChange}
+                className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
+              />
+            </div>
 
-    {/* Email */}
-    <div className="flex flex-col">
-      <label htmlFor="email" className="block text-sm font-medium mb-1">
-        Email
-      </label>
-      <input
-        type="email"
-        name="email"
-        value={reservationData.email}
-        onChange={handleChange}
-        className="w-full p-2 mb-4 border border-gray-300 rounded"
-      />
-    </div>
+            {/* Notes */}
+            <div className="flex flex-col md:col-span-2 lg:col-span-4">
+              <label htmlFor="notes" className="text-sm font-medium text-gray-700 mb-1">
+                Notes
+              </label>
+              <textarea
+                name="notes"
+                value={reservationData.notes}
+                onChange={handleChange}
+                className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
+              ></textarea>
+            </div>
 
-    {/* Number of People */}
-    <div className="flex flex-col">
-      <label htmlFor="number_of_people" className="block text-sm font-medium mb-1">
-        Number of People
-      </label>
-      <input
-        type="number"
-        name="number_of_people"
-        value={reservationData.number_of_people}
-        onChange={handleChange}
-        className="w-full p-2 mb-4 border border-gray-300 rounded"
-      />
-    </div>
-
-    {/* Notes */}
-    <div className="flex flex-col">
-      <label htmlFor="notes" className="block text-sm font-medium mb-1">
-        Notes
-      </label>
-      <textarea
-        name="notes"
-        value={reservationData.notes}
-        onChange={handleChange}
-        className="w-full p-2 mb-4 border border-gray-300 rounded"
-      ></textarea>
-    </div>
-
-    <button type="submit" className="bg-green-600 text-white py-2 px-4 rounded mt-4">
-      Book Now
-    </button>
-  </form>
-</section>
-
+            {/* Submit Button */}
+            <div className="md:col-span-2 lg:col-span-4">
+              <button
+                type="submit"
+                className="w-full bg-green-600 text-white py-2 px-4 rounded-md hover:bg-green-700 transition duration-300"
+              >
+                Book Now
+              </button>
+            </div>
+          </form>
+        </section>
       </div>
     </div>
   );

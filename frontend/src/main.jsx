@@ -1,10 +1,10 @@
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import './index.css';
-import { AuthProvider } from './context/AuthContext';
-import Layout from './layout.jsx';
 import App from './App.jsx';
+import { AuthProvider } from './context/AuthContext';
+import './index.css';
+import Layout from './layout.jsx';
 import Aboutus from './page/aboutus.jsx';
 import Event from './page/event.jsx';
 import Gallery from './page/galley.jsx';
@@ -14,7 +14,6 @@ import MenuPage from './page/menu.jsx';
 import Orders from './page/order.jsx';
 import Profile from './page/profile.jsx';
 import SignUp from './page/signup.jsx';
-import Cart from './page/cart.jsx';
 
 // Define routes
 const routes = [

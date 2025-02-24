@@ -59,7 +59,7 @@ function Aboutus(){
         <div className='pt-20 bg-gallery'>
 
             </div>
-        <Footer/>
+   
         </div>
     </div>
   )
