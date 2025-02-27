@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import NavBar from '../components/navbar';
-import Footer from '../components/footer';
-import { baseURL } from '../utils/useAxios';
+import { API_BASE_URL } from '../utils/EventApi';
 
 const Event = () => {
   // State to store the events data
@@ -13,7 +12,7 @@ const Event = () => {
   useEffect(() => {
     async function fetchData() {
       try {
-        const response = await fetch(`${baseURL}/event/`) ;
+        const response = await fetch(`${API_BASE_URL}/events/`) ;
         if (!response.ok) {
           throw new Error('Failed to fetch events');
         }
@@ -67,7 +66,7 @@ const Event = () => {
           ))}
         </div>
       </div>
-      <Footer />
+   
     </div>
   );
 };

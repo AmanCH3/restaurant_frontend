@@ -140,7 +140,6 @@ const Menu = () => {
         </section>
       </div>
 
-      <Footer />
     </div>
   );
 };
